@@ -3,6 +3,7 @@ package org.urov.greedy.search.rest.services;
 import org.springframework.stereotype.Service;
 import org.urov.greedy.search.algorithm.GraphBuilder;
 import org.urov.greedy.search.algorithm.GreedySearch;
+import org.urov.greedy.search.algorithm.MapLoader;
 import org.urov.greedy.search.entity.Maze;
 import org.urov.greedy.search.entity.cells.*;
 
@@ -10,6 +11,13 @@ import java.util.*;
 
 @Service
 public class MazeServiceImpl implements MazeService{
+
+    String[][] maze1 = new String[][] {
+            {"S", "*", "*", "*", "%"},
+            {"*", "%", "*", "*", "t_1_2"},
+            {"*", "t_1_1", "*", "%", "E"},
+            {"*", "%", "*", "*", "%"}
+    };
 
     private Maze maze;
     private Cell startCell;
@@ -66,7 +74,7 @@ public class MazeServiceImpl implements MazeService{
 
     @Override
     public String getMaze() {
-        maze =
+        maze = MapLoader.createMazeFromArray(maze1);
         return maze.toString();
     }
 

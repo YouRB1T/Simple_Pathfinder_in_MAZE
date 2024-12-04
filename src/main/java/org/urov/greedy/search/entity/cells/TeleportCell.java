@@ -46,6 +46,10 @@ public class TeleportCell extends Cell {
 
     @Override
     public String toString() {
-        return String.valueOf(pairId);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(pairId);
+        if (isEntry) stringBuilder.append("_1");
+        else stringBuilder.append("_2");
+        return stringBuilder.toString();
     }
 }
